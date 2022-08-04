@@ -1,3 +1,5 @@
+#[derive(Debug)]
+
 struct Rectangle {
     length: u32,
     width: u32,
@@ -32,4 +34,17 @@ fn main() {
 
     let rect4 = Rectangle::square(50);
     println!("area of rect4 = {}", rect4.area());
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn larger_can_hold_smaller() {
+        let larger = Rectangle { length: 8, width: 7 };
+        let smaller = Rectangle { length: 5, width: 1 };
+
+        assert!(larger.can_hold(&smaller));
+    }
 }
